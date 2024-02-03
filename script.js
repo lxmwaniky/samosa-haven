@@ -1,4 +1,4 @@
-const { GoogleSpreadsheet } = require('google-spreadsheet');
+import { GoogleSpreadsheet } from 'google-spreadsheet';
 document.getElementById("orderForm").addEventListener("submit", async function(event) {
         event.preventDefault();
 
@@ -34,8 +34,11 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
                                 Kachumbari: kachumbari ? 'Yes' : 'No',
                         });
 
+                        // Calculate total amount
+                        var totalAmount = samosas * 10;
+
                         // Submit form
-                        alert("Order placed successfully!");
+                        alert("Order placed successfully! Total amount: Ksh " + totalAmount);
                         document.getElementById("orderForm").reset();
                 } catch (error) {
                         console.error('Error:', error);
