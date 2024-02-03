@@ -22,4 +22,9 @@ document.getElementById('orderForm').addEventListener('submit', function(event) 
         orderElement.style.transform = 'translateX(-50%)'; // Center horizontally using transform
         orderElement.style.backgroundColor = 'green'; // Set background color to green
         document.body.appendChild(orderElement);
+
+        // Remove order element after 3 seconds
+        setTimeout(function() {
+                orderElement.remove();
+        }, 3000);
 });
