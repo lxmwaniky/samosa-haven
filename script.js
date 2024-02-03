@@ -16,8 +16,9 @@ document.getElementById('orderForm').addEventListener('submit', function(event) 
         var orderSummary = `Hello ${name}. Your order of ${samosas} samosas will be delivered in ${location} at time ${time}. Total cost: KES ${totalCost}`;
         var orderElement = document.createElement('div');
         orderElement.textContent = orderSummary;
-        orderElement.style.width = '0'; // Set initial width to 0
+        orderElement.style.display = 'inline-block'; // Set display to inline-block
         orderElement.style.backgroundColor = 'green'; // Set background color to green
+        orderElement.style.padding = '10px'; // Add padding to the element
         orderElement.style.margin = '0 auto'; // Center the element horizontally
         orderElement.style.textAlign = 'center'; // Center the text inside the element
         document.body.appendChild(orderElement);
