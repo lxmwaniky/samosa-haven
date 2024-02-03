@@ -1,4 +1,5 @@
-document.getElementById('orderForm').addEventListener('submit', function(event) {
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+document.getElementById('orderForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
         // Retrieve form values
@@ -27,4 +28,21 @@ document.getElementById('orderForm').addEventListener('submit', function(event) 
         setTimeout(function() {
                 orderElement.remove();
         }, 3000);
+
+        // Transfer data to spreadsheet
+        const doc = new GoogleSpreadsheet('YOUR_SPREADSHEET_ID');
+        await doc.useServiceAccountAuth({
+                client_email: 'YOUR_CLIENT_EMAIL',
+                private_key: 'YOUR_PRIVATE_KEY',
+        });
+        await doc.loadInfo(); // Loads the document properties and worksheets
+        const sheet = doc.sheetsByIndex[0]; // Assuming the data will be stored in the first sheet
+        await sheet.addRow({
+                Name: name,
+                Location: location,
+                Samosas: samosas,
+                Time: time,
+                Choice: choice,
+                TotalCost: totalCost,
+        });
 });
