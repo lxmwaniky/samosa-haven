@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samosa Haven</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Samosa Haven</h1>
+        <form id="orderForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" required>
+            </div>
+            <div class="form-group">
+                <label for="samosas">Number of Samosas:</label>
+                <input type="number" id="samosas" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Available Time:</label>
+                <input type="time" id="time" required>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" id="kachumbari">
+                <label for="kachumbari">Include Kachumbari</label>
+            </div>
+            <div class="form-group">
+                <label for="choice">Choose filling:</label>
+                <select id="choice">
+                    <option value="waru">Waru</option>
+                    <option value="ndengu">Ndengu</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Place Your Order</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
