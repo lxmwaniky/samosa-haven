@@ -1,27 +1,36 @@
 document.getElementById('orderForm').addEventListener('submit', function(event) {
         event.preventDefault();
-    
+
         // Retrieve form values
         var name = document.getElementById('name').value;
         var location = document.getElementById('location').value;
         var samosas = parseInt(document.getElementById('samosas').value);
         var time = document.getElementById('time').value;
-        var kachumbari = document.getElementById('kachumbari').checked;
         var choice = document.getElementById('choice').value;
-    
+
         // Calculate total cost
         var costPerSamosa = 10; // Cost per samosa in Ksh
         var totalCost = samosas * costPerSamosa;
-    
-        // Add additional cost if kachumbari is included
-        if (kachumbari) {
-            totalCost += 20; // Additional cost for kachumbari in Ksh
-        }
-    
+
         // Display order summary
-        var orderSummary = `Name: ${name}\nLocation: ${location}\nNumber of Samosas: ${samosas}\nTime: ${time}\nChoice: ${choice}\nTotal Cost: KES ${totalCost}`;
-        alert(orderSummary);
-    
-        // You can now send this information to your backend for processing (e.g., via AJAX)
-    });
-    
+        var orderSummary = `Hello ${name}. Your order of ${samosas} samosas will be delivered in ${location} at time ${time}. Total cost: KES ${totalCost}`;
+        var orderElement = document.createElement('div');
+        orderElement.textContent = orderSummary;
+        orderElement.style.width = '0'; // Set initial width to 0
+        orderElement.style.backgroundColor = 'green'; // Set background color to green
+        orderElement.style.margin = '0 auto'; // Center the element horizontally
+        orderElement.style.textAlign = 'center'; // Center the text inside the element
+        document.body.appendChild(orderElement);
+
+        // Trigger transition by setting width to 100%
+        setTimeout(function() {
+                orderElement.style.width = '100%';
+        }, 0);
+
+        // Remove order summary after 5 seconds
+        setTimeout(function() {
+                orderElement.remove();
+        }, 5000);
+
+
+});
