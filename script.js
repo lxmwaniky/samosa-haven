@@ -10,12 +10,12 @@ document.getElementById('orderForm').addEventListener('submit', function(event) 
         var choice = document.getElementById('choice').value;
     
         // Calculate total cost
-        var costPerSamosa = 10;
+        var costPerSamosa = 10; // Cost per samosa in Ksh
         var totalCost = samosas * costPerSamosa;
     
         // Add additional cost if kachumbari is included
         if (kachumbari) {
-            totalCost += 20; // Assuming kachumbari costs KES 20
+            totalCost += 20; // Additional cost for kachumbari in Ksh
         }
     
         // Display order summary
