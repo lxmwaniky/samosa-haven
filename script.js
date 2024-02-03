@@ -1,65 +1,48 @@
-import { GoogleSpreadsheet } from 'google-spreadsheet';
-document.getElementById('orderForm').addEventListener('submit', async function(event) {
+const { GoogleSpreadsheet } = require('google-spreadsheet');
+document.getElementById("orderForm").addEventListener("submit", async function(event) {
         event.preventDefault();
 
-        // Retrieve form values
-        var name = document.getElementById('name').value;
-        var location = document.getElementById('location').value;
-        var samosas = parseInt(document.getElementById('samosas').value);
-        var time = document.getElementById('time').value;
-        var choice = document.getElementById('choice').value;
+        // Get form values
+        var name = document.getElementById("name").value;
+        var location = document.getElementById("location").value;
+        var samosas = document.getElementById("samosas").value;
+        var time = document.getElementById("time").value;
+        var choice = document.getElementById("choice").value;
+        var kachumbari = document.getElementById("kachumbari").checked;
 
-        // Calculate total cost
-        var costPerSamosa = 10; // Cost per samosa in Ksh
-        var totalCost = samosas * costPerSamosa;
+        // Perform validation and submit form
+        if (name && location && samosas && time && choice) {
+                try {
+                        // Load the credentials and spreadsheet
+                        const doc = new GoogleSpreadsheet('YOUR_SPREADSHEET_ID');
+                        await doc.useServiceAccountAuth({
+                                client_email: 'YOUR_CLIENT_EMAIL',
+                                private_key: 'YOUR_PRIVATE_KEY',
+                        });
+                        await doc.loadInfo();
 
-        // Display order summary
-        var orderSummary = `Hello ${name}. Your order of ${samosas} samosas will be delivered in ${location} at time ${time}. Total cost: KES ${totalCost}`;
-        var orderElement = document.createElement('div');
-        orderElement.textContent = orderSummary;
-        orderElement.style.position = 'fixed'; // Set position to fixed
-        orderElement.style.top = '0'; // Set top position to 0
-        orderElement.style.left = '50%'; // Set left position to center horizontally
-        orderElement.style.transform = 'translateX(-50%)'; // Center horizontally using transform
-        orderElement.style.backgroundColor = 'green'; // Set background color to green
-        document.body.appendChild(orderElement);
+                        // Select the sheet you want to write to
+                        const sheet = doc.sheetsByIndex[0];
 
-        // Remove order element after 3 seconds
-        setTimeout(function() {
-                orderElement.remove();
-        }, 3000);
+                        // Append the order to the sheet
+                        await sheet.addRow({
+                                Name: name,
+                                Location: location,
+                                Samosas: samosas,
+                                Time: time,
+                                Choice: choice,
+                                Kachumbari: kachumbari ? 'Yes' : 'No',
+                        });
 
-        // Transfer data to spreadsheet
-        const doc = new GoogleSpreadsheet('YOUR_SPREADSHEET_ID');
-        await doc.useServiceAccountAuth({
-                client_email: 'YOUR_CLIENT_EMAIL',
-                private_key: 'YOUR_PRIVATE_KEY',
-        });
-        await doc.loadInfo(); // Loads the document properties and worksheets
-        const sheet = doc.sheetsByIndex[0]; // Assuming the data will be stored in the first sheet
-        await sheet.addRow({
-                Name: name,
-                Location: location,
-                Samosas: samosas,
-                Time: time,
-                Choice: choice,
-                TotalCost: totalCost,
-                Kachumbari: document.getElementById('kachumbari').checked,
-        });
-
-        // Show confirmation message
-        var confirmationMessage = 'Your order has been placed successfully!';
-        var confirmationElement = document.createElement('div');
-        confirmationElement.textContent = confirmationMessage;
-        confirmationElement.style.position = 'fixed'; // Set position to fixed
-        confirmationElement.style.top = '50%'; // Set top position to center vertically
-        confirmationElement.style.left = '50%'; // Set left position to center horizontally
-        confirmationElement.style.transform = 'translate(-50%, -50%)'; // Center both vertically and horizontally using transform
-        confirmationElement.style.backgroundColor = 'blue'; // Set background color to blue
-        document.body.appendChild(confirmationElement);
-
-        // Remove confirmation element after 3 seconds
-        setTimeout(function() {
-                confirmationElement.remove();
-        }, 3000);
+                        // Submit form
+                        alert("Order placed successfully!");
+                        document.getElementById("orderForm").reset();
+                } catch (error) {
+                        console.error('Error:', error);
+                        alert("An error occurred while submitting the order.");
+                }
+        } else {
+                // Display error message
+                alert("Please fill in all required fields.");
+        }
 });
