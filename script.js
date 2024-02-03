@@ -1,4 +1,4 @@
-const { GoogleSpreadsheet } = require('google-spreadsheet');
+import { GoogleSpreadsheet } from 'google-spreadsheet';
 document.getElementById('orderForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
@@ -44,5 +44,22 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
                 Time: time,
                 Choice: choice,
                 TotalCost: totalCost,
+                Kachumbari: document.getElementById('kachumbari').checked,
         });
+
+        // Show confirmation message
+        var confirmationMessage = 'Your order has been placed successfully!';
+        var confirmationElement = document.createElement('div');
+        confirmationElement.textContent = confirmationMessage;
+        confirmationElement.style.position = 'fixed'; // Set position to fixed
+        confirmationElement.style.top = '50%'; // Set top position to center vertically
+        confirmationElement.style.left = '50%'; // Set left position to center horizontally
+        confirmationElement.style.transform = 'translate(-50%, -50%)'; // Center both vertically and horizontally using transform
+        confirmationElement.style.backgroundColor = 'blue'; // Set background color to blue
+        document.body.appendChild(confirmationElement);
+
+        // Remove confirmation element after 3 seconds
+        setTimeout(function() {
+                confirmationElement.remove();
+        }, 3000);
 });
