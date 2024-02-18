@@ -1,3 +1,4 @@
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,27 +6,124 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #eaeaea;
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
 .container {
-    max-width: 1170px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.container .logo a {
-    color: #cbda00;
+/* Header styles */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo a {
     text-decoration: none;
-    font-size: 30px;
-    font-weight: 700;
+    color: #000;
 }
 
+/* Navigation styles */
+nav {
+    background-color: #f2f2f2;
+    padding: 10px;
+}
 
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
 
-main #menu .menu-item img {
-    height: 150px;
-    width: 150px;
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Hero section styles */
+#hero {
+    text-align: center;
+    padding: 50px 0;
+}
+
+#hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+#hero p {
+    font-size: 18px;
+    color: #888;
+}
+
+/* About section styles */
+#about {
+    padding: 50px 0;
+}
+
+#about h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#about p {
+    font-size: 16px;
+    color: #888;
+}
+
+/* Menu section styles */
+#menu {
+    padding: 50px 0;
+}
+
+#menu h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.menu-item img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.menu-item h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.menu-item p {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Footer styles */
+footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
 }
