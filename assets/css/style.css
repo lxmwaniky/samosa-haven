@@ -15,7 +15,6 @@ body {
     padding: 20px;
 }
 
-/* Header styles */
 header {
     display: flex;
     justify-content: center;
@@ -30,10 +29,9 @@ header {
 
 .logo a {
     text-decoration: none;
-    color: #000;
+    color: rgb(161, 219, 0);  
 }
 
-/* Navigation styles */
 nav {
     background-color: #f2f2f2;
     padding: 10px;
