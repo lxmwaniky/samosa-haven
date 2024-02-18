@@ -16,7 +16,16 @@ body {
     padding: 0 20px;
 }
 
+.container .logo a {
+    color: #cbda00;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+
+
 main #menu .menu-item img {
-    height: 70px;
-    width: 70px;
+    height: 150px;
+    width: 150px;
 }
