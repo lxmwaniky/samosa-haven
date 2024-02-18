@@ -30,3 +30,94 @@ header .logo a {
     font-weight: 600;
     text-decoration: none;
 }
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    list-style: none;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 6px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+nav ul li a:hover {
+    color: rgb(177, 177, 0);
+}
+
+/* Hero Section */
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 100px 0;
+}
+
+main section #hero {
+    flex: 1;
+}
+
+main section #hero h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+main section #hero p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+main section #hero a {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #acaf00;
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+main section #hero a:hover {
+    background-color: rgb(177, 177, 0);
+}
+
+main section #about {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main section #about h1 {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+main section #about p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+main section #menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
